@@ -229,7 +229,7 @@ void PostinstallRunnerAction::PerformPartitionPostinstall() {
     // Switch to a permissive domain
     if (setexeccon("u:r:backuptool:s0")) {
       LOG(ERROR) << "Failed to set backuptool context";
-      return CompletePostinstall(ErrorCode::kPostinstallRunnerError);
+      // return CompletePostinstall(ErrorCode::kPostinstallRunnerError);
     }
 
     // Run backuptool script
@@ -241,7 +241,7 @@ void PostinstallRunnerAction::PerformPartitionPostinstall() {
     // Switch back to update_engine domain
     if (setexeccon(nullptr)) {
       LOG(ERROR) << "Failed to set update_engine context";
-      return CompletePostinstall(ErrorCode::kPostinstallRunnerError);
+      // return CompletePostinstall(ErrorCode::kPostinstallRunnerError);
     }
   } else {
     LOG(INFO) << "Skipping backuptool scripts";
